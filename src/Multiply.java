@@ -37,7 +37,7 @@ public class Multiply {
         boolean prevZero = number.get(number.size() - 1) == 0;
         // contrariwise number to original
         for (int i = number.size()-1; i >= 0 ; i--) {
-            if (number.get(i) == 0 && prevZero){
+            if (number.get(i) == 0 && prevZero && i != 0){
                 prevZero = true;
             } else {
                 prevZero = false;

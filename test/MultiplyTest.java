@@ -1,22 +1,13 @@
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.util.Random;
 
-public class Main {
-    public static void main(String[] args) {
+class MultiplyTest {
 
+    @Test
+    void fromScratchMultiplication() {
         Multiply multiply = new Multiply();
-
-        /*try {
-            String bigInt = multiply.bigIntegerMultiplication("00", "097");
-            String fromScratch = multiply.fromScratchMultiplication("00", "097");
-            System.out.println("multiply with bigInteger: " + bigInt);
-            System.out.println("multiply from scratch: " + fromScratch);
-            if (bigInt.equals(fromScratch)){
-                System.out.println("multiplications are equal");
-            }
-        } catch (NumberFormatException e){
-            System.out.println(e);
-        }*/
-
         Random randomLengths = new Random(100);
         Random randomNumbers = new Random(16);
         Integer equals = 0;
@@ -33,15 +24,12 @@ public class Main {
                 int randNum2 = randomNumbers.nextInt(10);
                 stringNum2 += Integer.toString(randNum2);
             }
-            System.out.println(stringNum1 + " x " + stringNum2);
             String bigInt = multiply.bigIntegerMultiplication(stringNum1,stringNum2);
             String fromScratch = multiply.fromScratchMultiplication(stringNum1,stringNum2);
-            System.out.println(bigInt + ", " + fromScratch);
             if (bigInt.equals(fromScratch)){
                 equals++;
             }
         }
-        System.out.println(equals);
-
+        Assertions.assertEquals(equals,100);
     }
 }
