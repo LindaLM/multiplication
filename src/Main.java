@@ -1,19 +1,18 @@
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
 
         Multiply multiply = new Multiply();
-        try {
-            System.out.println("multiply with bigInteger: " + multiply.bigIntegerMultiplication("098776665", "9786543"));
-        } catch (NumberFormatException e){
-            System.out.println(e);
-        }
 
         try {
-            ArrayList<Integer> num = multiply.loadNumber("2233fgghgh445678");
-            System.out.println(num.toString());
-        } catch (NumberFormatException e) {
+            String bigInt = multiply.bigIntegerMultiplication("098776", "097");
+            String fromScratch = multiply.fromScratchMultiplication("098776", "097");
+            System.out.println("multiply with bigInteger: " + bigInt);
+            System.out.println("multiply from scratch: " + fromScratch);
+            if (bigInt.equals(fromScratch)){
+                System.out.println("multiplications are equal");
+            }
+        } catch (NumberFormatException e){
             System.out.println(e);
         }
     }
