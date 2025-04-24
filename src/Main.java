@@ -1,47 +1,28 @@
-import java.util.Random;
-
 public class Main {
     public static void main(String[] args) {
-
         Multiply multiply = new Multiply();
 
-        /*try {
-            String bigInt = multiply.bigIntegerMultiplication("00", "097");
-            String fromScratch = multiply.fromScratchMultiplication("00", "097");
-            System.out.println("multiply with bigInteger: " + bigInt);
-            System.out.println("multiply from scratch: " + fromScratch);
-            if (bigInt.equals(fromScratch)){
-                System.out.println("multiplications are equal");
-            }
-        } catch (NumberFormatException e){
-            System.out.println(e);
-        }*/
+        if (args.length == 3) {
+            if (args[0].equals("--alg1") || args[0].equals("alg1")){
+                try {
+                    String bigInt = multiply.bigIntegerMultiplication(args[1], args[2]);
+                    System.out.println(bigInt);
+                } catch (NumberFormatException e){
+                    System.out.println("Wrong format of number!");
+                }
 
-        Random randomLengths = new Random(100);
-        Random randomNumbers = new Random(16);
-        Integer equals = 0;
-        for (int i = 0; i < 100; i++) {
-            int randLength1 = randomLengths.nextInt(20) + 1;
-            int randLength2 = randomLengths.nextInt(20) + 1;
-            String stringNum1 = "";
-            for (int j = 0; j < randLength1; j++) {
-                int randNum1 = randomNumbers.nextInt(10);
-                stringNum1 += Integer.toString(randNum1);
+            } else if (args[0].equals("--alg2") || args[0].equals("alg2")) {
+                try {
+                    String fromScratch = multiply.fromScratchMultiplication(args[1], args[2]);
+                    System.out.println(fromScratch);
+                } catch (NumberFormatException e){
+                    System.out.println("Wrong format of number!");
+                }
+            } else {
+                System.out.println("You didn't choose algorithm!");
             }
-            String stringNum2 = "";
-            for (int j = 0; j < randLength2; j++) {
-                int randNum2 = randomNumbers.nextInt(10);
-                stringNum2 += Integer.toString(randNum2);
-            }
-            System.out.println(stringNum1 + " x " + stringNum2);
-            String bigInt = multiply.bigIntegerMultiplication(stringNum1,stringNum2);
-            String fromScratch = multiply.fromScratchMultiplication(stringNum1,stringNum2);
-            System.out.println(bigInt + ", " + fromScratch);
-            if (bigInt.equals(fromScratch)){
-                equals++;
-            }
+        } else {
+            System.out.println("Wrong number of arguments!");
         }
-        System.out.println(equals);
-
     }
 }
